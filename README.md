@@ -5,18 +5,18 @@ http://simpleseating.eu.pythonanywhere.com/
 
 Populated accounts that show features:
 <p>
-Company
-- [ ] Username - company123
-- [ ] Email - company123@gmail.com
-- [ ] Company name - Company123
-- [ ] Department - HR
-- [ ] Password - company123
+Company<br>
+- [ ] Username - company123<br>
+- [ ] Email - company123@gmail.com<br>
+- [ ] Company name - Company123<br>
+- [ ] Department - HR<br>
+- [ ] Password - company123<br>
 </p>
 
 <p>
-User
-- [ ] Gmail - employeeone.company123@gmail.com,  Employee123
-- [ ] Department - Engineer
+User<br>
+- [ ] Gmail - employeeone.company123@gmail.com,  Employee123<br>
+- [ ] Department - Engineer<br>
 </p>
 
 **Can also create your own accounts**
