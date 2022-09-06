@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>SimpleSeating</h2>
+    <h3>An App for Scheduling Hot Desks</h3>
+    <main role="main">
+
+      <div class="container marketing">
+
+        <div class="row" style="margin-bottom:10%;">
+          <div class="col-lg-6">
+            <a href="/companysignup"><i class="fa-solid fa-building fa-7x" style="color:#6c757d;"></i></a>
+            <h2>For Companies</h2>
+                <p>You can <a class="sign_up" href="/companysignup">sign up</a> your company for <b>FREE</b>.
+                You can share <b>UPDATES</b> with your employees.
+                You can <b>ADD</b> and <b>DELETE SEATS</b> according to a <b>SEATING PLAN</b> of your office that you can upload. You can view the <b>BOOKINGS</b> made by your employees.</p>
+                <p><a class="btn btn-secondary" href="/companysignup" role="button">Sign up »</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-6">
+            <a href="/employeeregistration"><i class="fa-solid fa-circle-user fa-7x"style="color:#6c757d;"></i></a>
+            <h2>For Employees</h2>
+                <p>You can <a class="register" href="/employeeregistration">register</a> as an employee for <b>FREE</b>.
+                You can view your company's <b>UPDATES</b> and <b>SEATING PLAN</b>.
+                You can <b>BOOK</b> a seat and view upcoming, past and today's <b>BOOKINGS</b>.</p>
+                <p><a class="btn btn-secondary" href="/employeeregistration" role="button">Register »</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+
+        <h2 style="padding-bottom: 3%;">Features</h2>
+
+        <div class="row featurette" style="padding-bottom: 5%; padding-top: 5%;">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Filter by department <span class="text-muted">Co-ordinate with your team</span></h2>
+            <p class="lead">You can filter seat bookings by department. Employees can view seats and the time/date people in certain departments have booked. With this feature, employees can coordinate with their team members and collaborate together at the office.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="/static/images/filter.png" data-holder-rendered="true" style="width: 50% height: 20%;">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" style="padding-bottom: 5%; padding-top: 5%;">
+          <div class="col-md-5">
+            <h2 class="featurette-heading">Update your Newsfeed<span class="text-muted">It'll keep your employees up to date.</span></h2>
+            <p class="lead">A company can post an update to be displayed on their employees newsfeed. Important messages can instantaneously be displayed to employees.</p>
+          </div>
+          <div class="col-md-7">
+            <img class="featurette-image img-fluid mx-auto" style="width: 50% height: 20%;" src="/static/images/newsfeed.png" data-holder-rendered="true">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <div class="row featurette" style="padding-bottom: 5%; padding-top: 5%;">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Email confirmation <span class="text-muted">You won't forget</span></h2>
+            <p class="lead">An email is sent to the employee when they reserve or cancel a seat booking. Should the company delete a seat or booking the employee will be notified via email. </p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="/static/images/email.png" data-holder-rendered="true" style="width: 50% height: 20%;">
+          </div>
+        </div>
+
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg>
+
+    <style>
+        h3 {
+            text-decoration: underline;
+            text-decoration-color: #FF1493;
+        }
+        .sign_up, .register {
+            color: black;
+            text-decoration-color: #FF1493;
+        }
+        /* visited link */
+        .sign_up:visited, .register:visited {
+          color: black;
+        }
+
+        /* mouse over link */
+        .sign_up:hover, .register:hover {
+          color: #FF1493;
+          text-decoration: none;
+        }
+
+        /* selected link */
+        .sign_up:active, .register:active {
+          color: black;
+        }
+        b {
+           color:#6c757d;
+        }
+        h3 {
+            color:#6c757d;
+            text-decoration:none;
+        }
+        img {
+            border: solid #f7fafa 8px;
+            border-radius: 8px;
+        }
+        h2 {
+            padding-bottom: 5px;
+        }
+    </style>
+{% endblock %}

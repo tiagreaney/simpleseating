@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add Seat</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.seat_id_name.label }}<br>
+            {{ form.seat_id_name(size=64) }}
+            {% for error in form.seat_id_name.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.seat_description.label }}<br>
+            {{ form.seat_description(size=64) }}
+            {% for error in form.seat_description.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <style>
+    #seat_id_name, #seat_description {
+        border: 1px solid white;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 8px;
+        width: 30%;
+        text-align: center;
+    }
+    </style>
+{% endblock %}
+
+

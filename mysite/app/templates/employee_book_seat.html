@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Book a Seat</h2>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p class="departmentFilter">
+            {{ form.department(size=64, placeholder='Filter by department') }}
+            {% for error in form.department.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p class="button" id="filterButton">{{ form.submit() }}</p>
+    </form>
+    <a href="{{ url_for('employee_book_seat') }}" class="button"><button>Clear</button></a>
+
+
+    {% if filtered %}
+        {% if bookings2 != [] %}
+            <table>
+                <tr>
+                    <th>Seat Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+                {% for seatBooking in bookings2 %}
+                    <tr>
+                        <td>{{ seatBooking[0] }}</td>
+                        <td>{{ seatBooking[1].date.strftime("%a: %d/%m/%Y") }}</td>
+                        <td>{{ seatBooking[1].start_time.strftime("%H:%M") }}</td>
+                        <td>{{ seatBooking[1].end_time.strftime("%H:%M") }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p style="margin-bottom: 70px;">No match for your Department filter</p>
+        {% endif %}
+
+    {% else %}
+        {% for seatBookingList in bookings %}
+            <h3>{{ seatBookingList[0][0] }} <i class="fa-solid fa-circle-info fa-2xs" title="{{ seatBookingList[0][1] }}"></i></h3>
+            {% if seatBookingList[1] != [] %}
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th></th>
+                    </tr>
+                    {% for seatBooking in seatBookingList[1] %}
+                        {% if seatBooking.availability > 0 %}
+                            <tr id="available">
+                        {% else %}
+                            <tr id="not-available">
+                        {% endif %}
+                            <td>{{ seatBooking.date.strftime("%a: %d/%m/%Y") }}</td>
+                            <td>{{ seatBooking.start_time.strftime("%H:%M") }}</td>
+                            <td>{{ seatBooking.end_time.strftime("%H:%M") }}</td>
+                            {% if seatBooking.availability > 0 %}
+                                <td><a href="{{ url_for('book_seat', seat_id=seatBooking.id) }}"><button>Book Now</button></a></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p style="margin-bottom: 70px;">No slots available for this seat</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <style>
+    h3 {
+        text-decoration: underline;
+        text-decoration-color: #FF1493;
+    }
+    #available {
+        background: rgba(51, 170, 51, .4);
+    }
+    #not-available {
+        background: #A9A9A9;
+    }
+    table {
+        width:50%;
+        margin-left:25%;
+        margin-right:25%;
+        margin-bottom: 70px;
+    }
+    button {
+      background-color: #fff;
+      border: 1px solid #d5d9d9;
+      border-radius: 8px;
+      box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+      box-sizing: border-box;
+      color: #0f1111;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 29px;
+      padding: 0 10px 0 11px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+    }
+
+    button:hover {
+      background-color: #f7fafa;
+    }
+
+    button:focus {
+      border-color: #008296;
+      box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+      outline: 0;
+    }
+
+    /*.filter {
+        display: flex;
+        width: 50%;
+    }
+
+    .departmentFilter {
+        float: left;
+    }
+
+    #filterButton {
+        float: right;
+    }*/
+
+
+    /*.buttons {
+        width: 10%;
+        margin-left:45%;
+        margin-right:45%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button {
+      display: inline-block;
+    }*/
+
+    #department {
+        border: 1px solid white;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 8px;
+        width: 30%;
+        text-align: center;
+    }
+    </style>
+
+{% endblock %}

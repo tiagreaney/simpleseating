@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Book a Seat</h2>
+    <h3>Today's Bookings</h3>
+    {% if todaysBookingsList != [] %}
+        <table>
+            <tr>
+                <th>Seat Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+            </tr>
+            {% for todaysBooking in todaysBookingsList %}
+                <tr>
+                    <td>{{ todaysBooking[0] }}</td>
+                    <td>{{ todaysBooking[1].date.strftime("%a: %d/%m/%Y") }}</td>
+                    <td>{{ todaysBooking[1].start_time.strftime("%H:%M") }}</td>
+                    <td>{{ todaysBooking[1].end_time.strftime("%H:%M") }}</td>
+                    <td><a href="{{ url_for('cancel_seat', seat_id=todaysBooking[1].id) }}"><button>Cancel</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="margin-bottom: 70px;">You have no bookings today.</p>
+    {% endif %}
+
+    <h3>Upcoming Bookings</h3>
+    {% if upcomingBookingsList != [] %}
+        <table>
+            <tr>
+                <th>Seat Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+            </tr>
+            {% for upcomingBooking in upcomingBookingsList %}
+                <tr>
+                    <td>{{ upcomingBooking[0] }}</td>
+                    <td>{{ upcomingBooking[1].date.strftime("%a: %d/%m/%Y") }}</td>
+                    <td>{{ upcomingBooking[1].start_time.strftime("%H:%M") }}</td>
+                    <td>{{ upcomingBooking[1].end_time.strftime("%H:%M") }}</td>
+                    <td><a href="{{ url_for('cancel_seat', seat_id=upcomingBooking[1].id) }}"><button>Cancel</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="margin-bottom: 70px;">You have no upcoming bookings.</p>
+    {% endif %}
+
+    <h3>Past Bookings</h3>
+    {% if pastBookingsList != [] %}
+        <table>
+            <tr>
+                <th>Seat Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            {% for pastBooking in pastBookingsList %}
+                <tr>
+                    <td>{{ pastBooking[0] }}</td>
+                    <td>{{ pastBooking[1].date.strftime("%a: %d/%m/%Y") }}</td>
+                    <td>{{ pastBooking[1].start_time.strftime("%H:%M") }}</td>
+                    <td>{{ pastBooking[1].end_time.strftime("%H:%M") }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="margin-bottom: 70px;">You have no past bookings.</p>
+    {% endif %}
+
+    <style>
+    h3 {
+        text-decoration: underline;
+        text-decoration-color: #FF1493;
+    }
+    table {
+        width:50%;
+        margin-left:25%;
+        margin-right:25%;
+        margin-bottom: 70px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+    }
+    button {
+      background-color: #fff;
+      border: 1px solid #d5d9d9;
+      border-radius: 8px;
+      box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+      box-sizing: border-box;
+      color: #0f1111;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 29px;
+      padding: 0 10px 0 11px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+    }
+
+    button:hover {
+      background-color: #f7fafa;
+    }
+
+    button:focus {
+      border-color: #008296;
+      box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+      outline: 0;
+    }
+    td {
+        border-bottom: 4px solid white;
+    }
+    </style>
+
+{% endblock %}

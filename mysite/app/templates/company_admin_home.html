@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column1">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.company_updates(rows='3',cols='62', placeholder='Add your company update here...') }}<br>
+                    {% for error in form.company_updates.errors %}
+                    <span style="color: #FF1493;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+
+        <div class="column2">
+            <h2>{{ companyName }}'s Updates</h2>
+                <p class="updates" style="white-space:pre-line;">{{ current_user.company.company_updates }}</p>
+        </div>
+    </div>
+    <style>
+        h3 {
+            text-decoration: underline;
+            text-decoration-color: #FF1493;
+        }
+        input:focus{
+            background-color: #b0c4de;
+            border: 0px solid;
+            border-radius: 5px;
+        }
+        input {
+            border: 1px solid #0073cf;
+            border-radius: 5px;
+            padding: 8px;
+        }
+        input[type=submit] {
+            border: 0px solid;
+            background-color: #0073cf;
+            color: white;
+        }
+        label {
+            color: #0073cf;
+        }
+        textarea {
+            border: 1px solid white;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 8px;
+            text-align: center;
+        }
+        textarea:hover {
+            border: 2px solid #f8f9fa;
+            background-color: white;
+        }
+        textarea:focus {
+            border: 2px solid #f8f9fa;
+            background-color: white;
+        }
+        li {
+            list-style: none;
+            color: #FF1493;
+            text-align: center;
+        }
+        .row {
+            padding-top: 30px;
+            display: flex;
+        }
+        .column1 {
+          flex: 30%;
+          padding-right:0px;
+        }
+        .column2 {
+            flex: 30%;
+            padding-left:0px;
+        }
+        .updates {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 60%;
+            margin-right: 20%;
+            margin-left: 20%;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}
+
+

@@ -1,0 +1,6 @@
+Dear user,
+
+You have cancelled your seat booking for {{ seatName }} on {{ seatBooking.date.strftime("%A, %d/%m/%Y,") }} at {{ seatBooking.start_time.strftime("%H:%M") }} to {{ seatBooking.end_time.strftime("%H:%M") }}.
+
+Sincerely,
+The SimpleSeating Team

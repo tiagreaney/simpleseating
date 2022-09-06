@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Today and Upcoming Bookings</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    {% for seatBookingList in bookings %}
+        {% for seatBooking in seatBookingList[1] %}
+            {% if seatBooking.availability > 0 %}
+                <tr id="available">
+            {% else %}
+                <tr id="not-available">
+            {% endif %}
+                <td>{{ seatBookingList[0][0] }} <i class="fa-solid fa-circle-info" title="{{ seatBookingList[0][1] }}"></i></td>
+                <td>{{ seatBooking.date.strftime("%a: %d/%m/%Y") }}</td>
+                <td>{{ seatBooking.start_time.strftime("%H:%M") }}</td>
+                <td>{{ seatBooking.end_time.strftime("%H:%M") }}</td>
+                <td><a href="{{ url_for('company_admin_delete_seat_booking', seat_id=seatBooking.id) }}"><button>Remove Booking</button></a></td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+    </table>
+
+    <h2>Past Bookings</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    {% for seatBookingList in pastBookings %}
+        {% for seatBooking in seatBookingList[1] %}
+            {% if seatBooking.availability > 0 %}
+                <tr id="available">
+            {% else %}
+                <tr id="not-available">
+            {% endif %}
+                <td>{{ seatBookingList[0] }}</td>
+                <td>{{ seatBooking.date.strftime("%a: %d/%m/%Y") }}</td>
+                <td>{{ seatBooking.start_time.strftime("%H:%M") }}</td>
+                <td>{{ seatBooking.end_time.strftime("%H:%M") }}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+    </table>
+
+    <style>
+    h3 {
+        text-decoration: underline;
+        text-decoration-color: #FF1493;
+    }
+    #available {
+        background: rgba(51, 170, 51, .4);
+    }
+    #not-available {
+        background: #A9A9A9;
+    }
+    table {
+        width:50%;
+        margin-left:25%;
+        margin-right:25%;
+        margin-bottom: 70px;
+    }
+
+
+    </style>
+
+{% endblock %}
+
+

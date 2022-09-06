@@ -1,0 +1,6 @@
+Dear user,
+
+This seat, {{ seatName }}, has been removed. Therefore your booking on {{ booking.date.strftime("%A, %d/%m/%Y,") }} at {{ booking.start_time.strftime("%H:%M") }} to {{ booking.end_time.strftime("%H:%M") }} has been cancelled.
+
+Sincerely,
+The SimpleSeating Team

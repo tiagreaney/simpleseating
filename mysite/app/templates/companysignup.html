@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Company sign up</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.company_username.label }} <i class="fa-solid fa-circle-info" title="This username will be used to register employees"></i><br>
+            {{ form.company_username(size=64) }}
+            {% for error in form.company_username.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64) }}
+            {% for error in form.email.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.company_name.label }}<br>
+            {{ form.company_name(size=64) }}
+            {% for error in form.company_name.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.department.label }}<br>
+            {{ form.department(size=64) }}
+            {% for error in form.department.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=64) }}
+            {% for error in form.password.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=64) }}
+            {% for error in form.password2.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <style>
+    </style>
+{% endblock %}
+
+

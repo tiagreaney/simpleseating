@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add Seat Booking</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.company_seat_id.label }}<br>
+            {{ form.company_seat_id(size=1) }}<br>
+            {% for error in form.company_seat_id.errors %}
+            <span style="color: #FF1493;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date(type="date") }}
+            {% for error in form.date.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.start_time.label }}<br>
+            {{ form.start_time(type="time") }}
+            {% for error in form.start_time.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.end_time.label }}<br>
+            {{ form.end_time(type="time") }}
+            {% for error in form.end_time.errors %}
+            <span style="color: #FF1493;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <style>
+    #company_seat_id {
+        border: 1px solid white;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 8px;
+        width: 30%;
+        text-align: center;
+    }
+    #date, #start_time, #end_time, #availability {
+        width: 30%;
+        text-align: center;
+    }
+    li {
+        list-style: none;
+        color: #FF1493;
+        text-align: center;
+    }
+    </style>
+
+{% endblock %}
+
+
